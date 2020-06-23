@@ -1,9 +1,10 @@
 class ActivitiesController < ApplicationController
   before_action :redirect_if_not_logged_in
 
-  def new
-    byebug
+  def index
+  end
 
+  def new
     if params[:user_id] && @user= User.find_by(id: params[:user_id])
       @activity= @user.activities.build
     else
@@ -37,6 +38,7 @@ class ActivitiesController < ApplicationController
       :zipcode,
       :description,
       :category_id,
+      :user_id
     )
   end
 

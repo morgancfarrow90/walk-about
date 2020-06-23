@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_06_23_172129) do
     t.string "state"
     t.string "zipcode"
     t.text "description"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
