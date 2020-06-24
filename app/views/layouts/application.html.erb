@@ -10,6 +10,29 @@
   </head>
 
   <body>
+
+    <div>
+      <% if logged_in?%>
+      <%= link_to "All Activities", activities_path%> |
+      <%= link_to "My Activities", user_activities_path(current_user)%> |
+      <%= link_to "Create Activity", new_activity_path%> |
+      <%= link_to "Sign Out", signout_path%>
+
+      <%else%>
+      <%= link_to "Sign Up", signup_path%> |
+      <%= link_to "Sign In", signin_path%>
+      <%end%>
+    </div>
+
+    <div>
+      <% if flash[:message] %>
+        <%= flash[:message] %>
+      <%end%>
+
+      <%=@error%>
+    </div>
+
     <%= yield %>
+
   </body>
 </html>

@@ -3,3 +3,7 @@
 <h2>Category: <%=@activity.category.name%>  <br>
 <h3>Address: <%=@activity.address%>, <%=@activity.city%>, <%=@activity.state%> <%=@activity.zipcode%></h3>
 <p>Description: <%=@activity.description%></p>
+
+<%if @activity.user == current_user %>
+  <%= link_to "Edit Activity", edit_activity_path(@activity)%>
+<%end%>
