@@ -5,9 +5,12 @@ class ActivitiesController < ApplicationController
     if params[:user_id] && @user= User.find_by(id: params[:user_id])
       @activities= @user.activities
     else
-      @activities= Activity.all
+      @error = "That user doesn't exist" if params[:user_id]
+      @activities= Activity.includes(:category, :user)
     end
-    @categories= Category.all
+
+    @activities = @activities.search(params[:q].downcase) if params[:q] && !params[:q].empty?
+
   end
 
   def new

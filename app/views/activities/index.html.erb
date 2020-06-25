@@ -1,12 +1,20 @@
-<ul>
-  <%@categories.each do |category| %>
-    <%=category.name%><br>
-    <%category.activities.each do |activity| %>
-      <li><%=link_to activity.name, activity_path(activity)%></li><br><br>
-      <%end%>
-  <%end%><br>
+<h1>Index</h1>
 
-    <%@activities.each do |activity| %>
-    <li><%=link_to activity.name, activity_path(activity)%></li>
-  <%end%>
+<%=form_tag("/activities", method: 'get') do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<%end%>
+
+<br>
+<br>
+
+<% if @activities.blank? %>
+  <h2>No activities found. Add one <%= link_to "here", new_activity_path %> </h2>
+<%else%>
+  <ul>
+    <% @activities.each do |activity|%>
+    <li><%= link_to activity.name, activity_path(activity) %> </li>
+  <% end %>
 </ul>
+<%end%>
