@@ -14,7 +14,7 @@
     <div>
       <% if logged_in?%>
       <%= link_to "All Activities", activities_path%> |
-      <%= link_to "My Activities", user_activities_path(current_user)%> |
+      <%= link_to "My Activities", user_activities_path(current_user.id)%> |
       <%= link_to "Create Activity", new_activity_path%> |
       <%= link_to "Sign Out", signout_path, method: 'delete' %>
 

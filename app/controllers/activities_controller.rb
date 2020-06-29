@@ -2,20 +2,25 @@ class ActivitiesController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def index
-    if params[:user_id] && @user= User.find_by(id: params[:user_id])
-      @activities= @user.activities
-    else
-      @error = "That user doesn't exist" if params[:user_id]
-      @activities= Activity.includes(:category, :user)
-    end
+
+    @categories= Category.all
+      if params[:user_id] && @user= User.find_by(id: params[:user_id])
+        @activities= @user.activities
+      else
+        @error = "That user doesn't exist" if params[:user_id]
+        @activities= Activity.all
+      end
 
     @activities = @activities.search(params[:q].downcase) if params[:q] && !params[:q].empty?
+    @activities = @activities.categoryfilter(params[:activity][:category_id]) if params[:activity] && params[:activity][:category_id] != ""
 
   end
 
   def new
     if params[:user_id] && @user= User.find_by(id: params[:user_id])
       @activity= @user.activities.build
+    elsif params[:category_id] && @category= Category.find_by(id: params[:category_id])
+      @activity= @category.activities.build
     else
       @activity= Activity.new
     end

@@ -9,12 +9,22 @@
 <br>
 <br>
 
+<%= form_tag("/activities", method: 'get') do %>
+  <%= label_tag(:category_id, "Select a Category:") %>
+  <%= collection_select(:activity,:category_id, Category.all,:id, :name) %>
+  <%= submit_tag("Filter") %>
+<% end %>
+
+<br><br>
+
 <% if @activities.blank? %>
   <h2>No activities found. Add one <%= link_to "here", new_activity_path %> </h2>
 <%else%>
+
   <ul>
-    <% @activities.each do |activity|%>
-    <li><%= link_to activity.name, activity_path(activity) %> </li>
-  <% end %>
-</ul>
+  <% @activities.each do |activity| %>
+      <li><%= link_to activity.name, activity_path(activity)%> | <%= activity.category.name%></li>
+        <%end%>
+        <br>
+  </ul>
 <%end%>
