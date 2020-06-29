@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+landscapes =Category.create([{name: 'Landscape Architecture'}])
+statues =Category.create([{name: 'Statue'}])
+buildigs =Category.create([{name: 'Architecture'}])

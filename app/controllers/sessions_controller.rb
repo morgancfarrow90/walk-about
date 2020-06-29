@@ -12,15 +12,15 @@ class SessionsController < ApplicationController
   end
 
   def google_signin
-    @user= User.find_or_create_by(email: auth["info"]["email"]) do |user|
+    @user= User.find_or_create_by!(email: auth["info"]["email"]) do |user|
       user.username= auth["info"]["first_name"]
       user.password= SecureRandom.hex(10)
     end
-    if @user.save
+   if @user.save
       session[:user_id]= @user.id
       redirect_to user_path(@user)
     else
-      redirect_to 'sessions#home'
+      redirect_to root_path
     end
   end
 
