@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   delete '/signout', to: 'sessions#destroy', as: 'signout'
 
+  get 'auth/:provider/callback' => 'sessions#google_signin'
+
+
+
   resources :activities
 
   resources :categories
