@@ -1,8 +1,0 @@
-<% @category.activities.each do |activity| %>
-<ul>
-  <h2>Category: <%=@category.name%></h2>
-      <li><%= link_to activity.name, activity_path(activity)%></li>
-</ul>
-<%end%>
-
-<h3><%= link_to "Add Activity", new_category_activity_path(@category) %> </h3>

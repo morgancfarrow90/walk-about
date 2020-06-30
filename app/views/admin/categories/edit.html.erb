@@ -1,0 +1,7 @@
+<h1>Edit Category</h1>
+
+<%= render partial: "layouts/errors", locals: {object: @category} %>
+
+<%= render 'form', category: @category %><br>
+
+<%=button_to "Delete", admin_category_path(@category), method: :delete%>

@@ -12,17 +12,21 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback' => 'sessions#google_signin'
 
+  namespace :admin do
+    resources :categories, only: [:index, :new, :create, :edit, :show, :destroy]
+  end
 
-
-  resources :activities
+  resources :users do
+    resources :activities, only: [:index, :new, :create]
+  end
 
   resources :categories do
     resources :activities, only: [:index, :new, :create]
   end
 
-  resources :users do
-    resources :activities, only: [:index, :new, :create]
+  resources :activities
 
-  end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
+
+# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

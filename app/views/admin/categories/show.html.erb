@@ -1,0 +1,5 @@
+<h2>Category: <%=@category.name%></h2>
+
+<h3><%= link_to "Add Activity", new_category_activity_path(@category) %> </h3>
+
+<h3><%= link_to "Edit Category", edit_admin_category_path(@category)%></h3>
