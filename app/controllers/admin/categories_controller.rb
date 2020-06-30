@@ -1,4 +1,6 @@
 class Admin::CategoriesController < ApplicationController
+  before_action :redirect_if_not_logged_in
+
 
   def index
     @categories= Category.all
@@ -9,7 +11,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
-    byebug
+    
     @category= Category.new(category_params)
 
     if @category.save

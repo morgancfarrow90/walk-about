@@ -29,6 +29,7 @@ class ActivitiesController < ApplicationController
   def create
     @activity= current_user.activities.build(activity_params)
     if @activity.save
+      flash[:message] = "Success!"
       redirect_to activity_path(@activity)
     else
       render :new
@@ -56,7 +57,6 @@ class ActivitiesController < ApplicationController
       @activity.destroy
       redirect_to user_activities_path(current_user)
     else
-      flash[:message] = "You are not permitted to delete this entry."
       redirect_to root_path
     end
   end

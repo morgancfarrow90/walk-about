@@ -1,6 +1,7 @@
 class Activity < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  validates :name, :address, :city, :state, :zipcode, :description, presence: true
 
   def self.categoryfilter(params)
       where("category_id = ?", params)
