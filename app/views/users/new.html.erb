@@ -4,21 +4,31 @@
 
 <%=form_with model: @user, local: true do |f| %>
 
+  <div class="field">
   <%=f.label :username%>
   <%=f.text_field :username%>
+  </div>
   <br><br>
 
+  <div class="field">
   <%=f.label :password%>
   <%=f.password_field :password%>
+  </div>
   <br><br>
 
+  <div class="field">
   <%=f.label :Password_Confirmation%>
   <%=f.password_field :password_confirmation%>
+  </div>
   <br><br>
 
+  <div class="field">
   <%=f.label :email%>
   <%=f.email_field :email%>
+  </div>
   <br><br>
 
+  <div class="actions">
   <%=f.submit%>
+  </div>
 <%end%>

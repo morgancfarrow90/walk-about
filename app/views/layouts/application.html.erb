@@ -12,7 +12,15 @@
   <body>
 
     <div class= "navbar">
-      <% if logged_in?%>
+
+      <%if logged_in? && current_user.admin == true%>
+      <%= link_to "Categories", admin_categories_path %> |
+      <%= link_to "All Activities", activities_path%> |
+      <%= link_to "My Activities", user_activities_path(current_user.id)%> |
+      <%= link_to "Create Activity", new_activity_path%> |
+      <%= link_to "Sign Out", signout_path, method: 'delete' %>
+
+      <% elsif logged_in? && current_user.admin == false%>
       <%= link_to "All Activities", activities_path%> |
       <%= link_to "My Activities", user_activities_path(current_user.id)%> |
       <%= link_to "Create Activity", new_activity_path%> |
