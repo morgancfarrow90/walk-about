@@ -1,6 +1,9 @@
 <h1>Comment on: <%=@comment.activity.name%></h1>
 
-<h3> <%=@comment.comment%></h3>
+<h3> <%=@comment.title%></h3>
+<h3> Rating: <%=@comment.rating%></h3>
+
+<p><%=@comment.comment%></p>
 
 <%if @comment.user == current_user %>
   <%= link_to "Edit Comment", edit_comment_path(@comment)%>

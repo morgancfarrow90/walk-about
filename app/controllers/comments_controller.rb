@@ -1,6 +1,11 @@
 class CommentsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
+  def home
+    @comments= Comment.all
+  end
+
+
   def index
     if params[:activity_id]
       @comments = Activity.find(params[:activity_id]).comments
@@ -63,6 +68,8 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(
       :user_id,
       :activity_id,
+      :title,
+      :rating,
       :comment)
     end
 

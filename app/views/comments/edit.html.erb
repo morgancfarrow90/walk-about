@@ -1,3 +1,5 @@
+<h1>Edit Comment on: <%= @comment.activity.name%></h1>
+
 <%= render partial: "layouts/errors", locals: {object: @comment} %>
 
 <%= render 'form', comment: @comment%><br>

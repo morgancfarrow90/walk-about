@@ -1,0 +1,17 @@
+<h1>Comments Corner</h1>
+<Br>
+
+<h2>Most Recent: </h2>
+<ul>
+<% @comments.last_three.each do |comment| %>
+  <li><%= link_to comment.title, comment_path(comment)%> - <%= link_to comment.activity.name, "/activities/#{comment.activity_id}"%></li>
+  <br><br>
+<%end%>
+</ul>
+
+<h2>Top Rated:</h2>
+<ul>
+  <% @comments.five_star.last_three.each do |comment| %>
+  <li><%= comment.rating%> - <%=link_to comment.title, comment_path(comment)%></li>
+  <%end%>
+</ul>

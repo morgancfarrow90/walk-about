@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'application#home'
 
+  get '/comments/home', to: 'comments#home', as: 'comments_home'
+
   get '/signup', to: 'users#new', as: 'signup'
   post '/signup', to: 'users#create'
 

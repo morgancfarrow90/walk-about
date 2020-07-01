@@ -4,10 +4,14 @@
 <h3>Address: <%=@activity.address%>, <%=@activity.city%>, <%=@activity.state%> <%=@activity.zipcode%></h3>
 <p>Description: <%=@activity.description%></p>
 
+<h2>Average Rating (out of 5): <%=@activity.comments.average(:rating)%> </h2>
+
 <h2>Comments:</h2>
-  <% @activity.comments.each do |comment| %>
-  <%= comment.comment %> <p> By: <%= link_to comment.user.username, user_path(comment.user)%><br><br>
+  <% @activity.comments.last_three.each do |comment| %>
+  <%= link_to comment.title, comment_path(comment) %> <p> By: <%= link_to comment.user.username, user_path(comment.user)%><br><br>
   <%end%>
+
+<h2><%=link_to "See All Comments for #{@activity.name}", activity_comments_path(@activity)%></h2>
 
 <h2><%= link_to "Add a Comment", new_activity_comment_path(@activity) %>
   <br><br>
