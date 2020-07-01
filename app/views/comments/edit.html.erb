@@ -1,0 +1,5 @@
+<%= render partial: "layouts/errors", locals: {object: @comment} %>
+
+<%= render 'form', comment: @comment%><br>
+
+<%=button_to "Delete", comment_path(@comment), method: :delete%>

@@ -1,0 +1,12 @@
+<h1>Comment on: <%= @comment.activity.name%></h1>
+
+<%= form_with model: @comment, local: true do |f| %>
+
+<%= f.hidden_field :activity_id, :value => params[:activity_id]%>
+<%= f.hidden_field :user_id, :value=> session[:user_id] %>
+
+<%= f.label :comment%>
+<%= f.text_area :comment%><br>
+
+<%= f.submit%>
+<%end%>

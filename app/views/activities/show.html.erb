@@ -6,10 +6,10 @@
 
 <h2>Comments:</h2>
   <% @activity.comments.each do |comment| %>
-  <%= comment.comment %> <br> <p> By: <%= link_to comment.user.username, user_path(comment.user)%>
+  <%= comment.comment %> <p> By: <%= link_to comment.user.username, user_path(comment.user)%><br><br>
   <%end%>
 
-<h2><%= link_to "Add a Comment", new_activity_comment_path %>
+<h2><%= link_to "Add a Comment", new_activity_comment_path(@activity) %>
   <br><br>
 
 <%if @activity.user == current_user %>
