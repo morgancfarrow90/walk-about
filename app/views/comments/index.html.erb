@@ -3,7 +3,11 @@
 
 <ul>
 <% @comments.all.newest_first.each do |comment| %>
-  <li><%= link_to comment.title, comment_path(comment)%> - <%= link_to comment.activity.name, "/activities/#{comment.activity_id}"%> <%=comment.created_at%></li>
+  <li>
+    <%= link_to comment.title, comment_path(comment)%> -
+    <%= link_to comment.activity.name, "/activities/#{comment.activity_id}"%> -
+    Rating: <%= comment.rating%> -
+    <%=comment.created_at.strftime("%m-%d-%Y")%></li>
   <br><br>
 <%end%>
 </ul>
