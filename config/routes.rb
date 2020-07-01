@@ -26,7 +26,11 @@ Rails.application.routes.draw do
   end
 
   resources :activities do
-      resources :comments, only: [:index, :new, :create, :show, :edit, :destroy]
+    resources :comments, only: [:index, :new, :create, :show, :edit, :destroy]
+  end
+
+  resources :users do
+    resources :comments, only: [:index]
   end
 
   resources :comments

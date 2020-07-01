@@ -4,6 +4,8 @@ class CommentsController < ApplicationController
   def index
     if params[:activity_id]
       @comments = Activity.find(params[:activity_id]).comments
+    elsif params[:user_id] && @user= User.find_by(id: params[:user_id])
+      @comments= @user.comments
     else
     @comments= Comment.all
     end
