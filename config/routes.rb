@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :comments
+
   root to: 'application#home'
 
   get '/signup', to: 'users#new', as: 'signup'
@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     resources :activities, only: [:index, :new, :create]
   end
 
-  resources :activities
+  resources :activities do
+      resources :comments, only: [:new, :create]
+  end
 
 end
 

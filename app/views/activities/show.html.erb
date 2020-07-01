@@ -4,6 +4,14 @@
 <h3>Address: <%=@activity.address%>, <%=@activity.city%>, <%=@activity.state%> <%=@activity.zipcode%></h3>
 <p>Description: <%=@activity.description%></p>
 
+<h2>Comments:</h2>
+  <% @activity.comments.each do |comment| %>
+  <%= comment.comment %> <br> <p> By: <%= link_to comment.user.username, user_path(comment.user)%>
+  <%end%>
+
+<h2><%= link_to "Add a Comment", new_activity_comment_path %>
+  <br><br>
+
 <%if @activity.user == current_user %>
   <%= link_to "Edit Activity", edit_activity_path(@activity)%>
 <%end%>
